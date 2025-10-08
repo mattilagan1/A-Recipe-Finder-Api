@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
     user = User.find_by(email: params[:email])
 
     # Authenticate the user
-    if user && user.Authenticate(params[:password])
+    if user && user.authenticate(params[:password])
       # Generate a JWT Token
       token = JWT.encode({user_id: user.id}, Rails.application.credentials.secret_key_base)
 

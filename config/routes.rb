@@ -11,6 +11,7 @@ Rails.application.routes.draw do
   get "/recipes" => "recipe#index"
   post "/recipe" => "recipe#create"
 
-  
+  post "/signup" => "user#create"
+  post "/login" => "sessions#create"
 
 end
