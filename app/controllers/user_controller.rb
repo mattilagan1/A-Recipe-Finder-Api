@@ -5,10 +5,6 @@ class UserController < ApplicationController
     render json: users
   end
 
-  def show
-    render json: user
-  end
-
   def create
     user = User.new(
       name: params[:name],
@@ -23,23 +19,4 @@ class UserController < ApplicationController
       render json: { errors: user.errors.full_messages}, status: :unprocessable_entity
     end
   end
-
-  def update
-    user.update(
-      name: params[:name] || user.name,
-      email: params[:email] || user.email,
-      password: params[:password] || user.password,
-      password_confirmation: params[:password_confirmation] || user.password_confirmation
-    )
-
-    render json: user
-  end
-
-  def destroy
-    user.destroy
-
-    render json: { message: 'User deleted...' }
-  end
-
-  
 end
