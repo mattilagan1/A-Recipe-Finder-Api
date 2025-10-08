@@ -5,10 +5,6 @@ class RecipeController < ApplicationController
     render json: recipes
   end
 
-  def show
-    render json: recipe
-  end
-
   def create
     recipe = Recipe.new(
       name: params[:name],
