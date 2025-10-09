@@ -13,14 +13,4 @@ class ApplicationController < ActionController::API
   def current_user
     @current_user
   end
-
-  # rescue from pundit errors
-  # error handling for people who don't have access but are logged in
-  rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
-
-  private
-
-  def user_not_authorized
-    render json: { error: "You are not authorized to perform this action" }, status: :forbidden
-  end
 end

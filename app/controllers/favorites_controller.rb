@@ -1,5 +1,5 @@
-class FavoriteController < ApplicationController
-  
+class FavoritesController < ApplicationController
+#  before_action :authenticate
   def index
     favorites = Favorite.all
 
@@ -12,7 +12,7 @@ class FavoriteController < ApplicationController
       recipe_id: params[:recipe_id]
     )
 
-    if recipe.save
+    if favorite.save
       render json: { message: 'Users recipe was saved to favorites' }, status: :created
     else
       render json: { errors: favorite.error.full_messages }, status: :unprocessable_entity

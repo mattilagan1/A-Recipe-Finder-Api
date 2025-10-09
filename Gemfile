@@ -48,3 +48,5 @@ end
 
 gem 'bcrypt', '~> 3.1.7'
 gem 'jwt', '~> 2.2'
+
+gem 'active_model_serializers'

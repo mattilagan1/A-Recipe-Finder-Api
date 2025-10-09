@@ -8,10 +8,12 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "/recipes" => "recipe#index"
-  post "/recipe" => "recipe#create"
+  get "/recipes" => "recipes#index"
+  post "/recipes" => "recipes#create"
 
   post "/signup" => "user#create"
   post "/login" => "sessions#create"
 
+  get "/favorites" => "favorites#index"
+  post "/favorites" => "favorites#create"
 end
