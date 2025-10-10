@@ -8,8 +8,17 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "/recipes" => "recipes#index"
-  post "/recipes" => "recipes#create"
+  namespace :api do
+    namespace :v1 do
+      resources :recipes, only: [:index, :create] do
+        collection do
+          get :search
+        end
+      end
+    end
+  end
+  # get "/recipes" => "recipes#index"
+  # post "/recipes" => "recipes#create"
 
   post "/signup" => "user#create"
   post "/login" => "sessions#create"
