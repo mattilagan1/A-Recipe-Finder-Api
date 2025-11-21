@@ -10,8 +10,9 @@ module Api
       end
       
       def search
-        if params[:query].present? && params[:query].length >= 1
-          recipes = Recipe.search_anywhere(params[:query])
+        if params[:query]
+          recipes = Recipe.where("name ILIKE ?", "%#{params[:query]}%")
+          # recipes = Recipe.search_anywhere(params[:query])
         else 
           recipes = Recipe.all
         end
